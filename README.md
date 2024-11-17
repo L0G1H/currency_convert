@@ -9,7 +9,7 @@ A Python library to fetch real-time currency exchange rates from [Forbes Advisor
 ---
 
 ```bash
-pip install git+https://github.com/yourusername/currency_convert.git
+pip install git+https://github.com/L0G1H/currency_convert.git
 ```
 
 ### Dependencies
