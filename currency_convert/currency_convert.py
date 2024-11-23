@@ -8,6 +8,9 @@ def get_rate(base_curr: str, target_curr: str) -> float:
     base_curr = base_curr.lower()
     target_curr = target_curr.lower()
 
+    if base_curr == target_curr:
+        return 1
+
     url = f"https://www.forbes.com/advisor/money-transfer/currency-converter/{base_curr}-{target_curr}/"
 
     response = requests.get(url)
@@ -31,6 +34,9 @@ def get_backup_rate(base_curr: str, target_curr: str) -> float:
     base_curr = base_curr.upper()
     target_curr = target_curr.upper()
 
+    if base_curr == target_curr:
+        return 1
+
     try:
         c = CurrencyConverter()
         rate = c.convert(1, base_curr, target_curr)
@@ -38,3 +44,19 @@ def get_backup_rate(base_curr: str, target_curr: str) -> float:
         return float(rate)
     except Exception as e:
         raise Exception(f"Backup rate failed: {e}")
+
+
+def get_safe_rate(base_curr: str, target_curr: str) -> float:
+    try:
+        rate = get_rate(base_curr, target_curr)
+        return rate
+    except:
+        pass
+
+    try:
+        rate = get_backup_rate(base_curr, target_curr)
+        return rate
+    except:
+        pass
+
+    return 0

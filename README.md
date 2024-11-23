@@ -34,11 +34,12 @@ This library requires the following dependencies, which will be installed automa
 ---
 
 ```python
-from currency_convert import get_rate, get_backup_rate
+from currency_convert import *
 
 base_currency = "USD"
 target_currency = "EUR"
 
 rate = get_rate(base_currency, target_currency)
 backup_rate = get_backup_rate(base_currency, target_currency)
+safe_rate = get_safe_rate(base_currency, target_currency)
 ```
